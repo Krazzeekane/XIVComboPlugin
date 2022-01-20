@@ -180,6 +180,18 @@ namespace XIVComboPlugin
 
         // MONK
         // you get nothing, you lose, have a nice day etc
+        // Replace Snap Punch with Snap Punch combo
+            if (Configuration.ComboPresets.HasFlag(CustomComboPreset.MonkSnapPunchCombo))
+                if (actionID == MNK.SnapPunch)
+                {
+                    if (comboTime > 0)
+                    {
+                        if (lastMove == MNK.Bootshine && level >= 4)
+                            return MNK.TwinSnakes;
+                        if (lastMove == MNK.TwinSnakes && level >= 6)
+                            return MNK.SnapPunch;
+                    }
+                }
 
         // RED MAGE
         [CustomComboInfo("Red Mage AoE Combo", "Replaces Veraero/thunder 2 with Impact when Dualcast or Swiftcast are active", 35)]

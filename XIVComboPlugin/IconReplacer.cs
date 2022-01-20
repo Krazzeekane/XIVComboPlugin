@@ -811,6 +811,19 @@ namespace XIVComboPlugin
             // MONK
             // haha you get nothing now
 
+            // Replace Snap Punch with Snap Punch combo
+            if (Configuration.ComboPresets.HasFlag(CustomComboPreset.MonkSnapPunchCombo))
+                if (actionID == MNK.SnapPunch)
+                {
+                    if (comboTime > 0)
+                    {
+                        if (lastMove == MNK.Bootshine && level >= 4)
+                            return MNK.TwinSnakes;
+                        if (lastMove == MNK.TwinSnakes && level >= 6)
+                            return MNK.SnapPunch;
+                    }
+                }
+
             // RED MAGE
 
             // Replace Veraero/thunder 2 with Impact when Dualcast is active
